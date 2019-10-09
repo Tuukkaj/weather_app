@@ -60,5 +60,9 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
+	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+	<string>Enable locations to receive weather data of your location</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>Enable locations to receive weather data of your location</string>
 </dict>
 </plist>
