@@ -20,7 +20,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
         
         gps?.requestAlwaysAuthorization()
         self.gps?.delegate = self
-        fetchWeather()
+        
+        let lastFetch = UserDefaults.standard.double(forKey: Constants.PREF_LAST_FETCH)
+        let now = Date().toSeconds()
+        
+        let difference = now - lastFetch
+        NSLog("DIFFERENCE : \(difference)")
+        
+        if difference < 600 {
+            NSLog("Should be looking data from files")
+        } else {
+            NSLog("Fetching weather")
+            fetchWeather()
+        }
         
         return true
     }
@@ -51,10 +63,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
         NSLog(String(describing: data))
         if let data_ = data {
             let resstr = String(data: data_, encoding: String.Encoding.utf8)
-
+            guard let weatherData = try? JSONDecoder().decode(WeatherModel.WeatherData.self, from: data_) else {
+                print("Error: Couldn't decode data into Weather object")
+                return
+            }
+            
+            
             // Execute stuff in UI thread
             DispatchQueue.main.async(execute: {() in
-             NSLog(resstr!)
+                self.weather.data = weatherData
+                
+                let defaultDB = UserDefaults.standard
+                defaultDB.set(Date().toSeconds(), forKey: Constants.PREF_LAST_FETCH)
+                defaultDB.synchronize()
+                
+                NSLog(String(describing: self.weather.data?.list[1].weather[0].main))
             })
         } else {
             NSLog("No data in response")
