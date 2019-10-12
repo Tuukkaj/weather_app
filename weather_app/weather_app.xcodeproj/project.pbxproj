@@ -19,10 +19,10 @@
 		64CBF28E234C6B650064D5E1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 64CBF28C234C6B650064D5E1 /* Main.storyboard */; };
 		64CBF290234C6B660064D5E1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 64CBF28F234C6B660064D5E1 /* Assets.xcassets */; };
 		64CBF293234C6B660064D5E1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 64CBF291234C6B660064D5E1 /* LaunchScreen.storyboard */; };
-		64CBF29C234C6F440064D5E1 /* currentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64CBF29B234C6F440064D5E1 /* currentViewController.swift */; };
-		64CBF29E234C6F830064D5E1 /* futureViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64CBF29D234C6F830064D5E1 /* futureViewController.swift */; };
-		64CBF2A0234C6F950064D5E1 /* citiesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64CBF29F234C6F950064D5E1 /* citiesViewController.swift */; };
-		64CBF2A2234C7B5B0064D5E1 /* addCityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64CBF2A1234C7B5B0064D5E1 /* addCityViewController.swift */; };
+		64CBF29C234C6F440064D5E1 /* NowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64CBF29B234C6F440064D5E1 /* NowController.swift */; };
+		64CBF29E234C6F830064D5E1 /* FiveDaysController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64CBF29D234C6F830064D5E1 /* FiveDaysController.swift */; };
+		64CBF2A0234C6F950064D5E1 /* CitiesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64CBF29F234C6F950064D5E1 /* CitiesController.swift */; };
+		64CBF2A2234C7B5B0064D5E1 /* AddCityController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64CBF2A1234C7B5B0064D5E1 /* AddCityController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,10 +40,10 @@
 		64CBF28F234C6B660064D5E1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		64CBF292234C6B660064D5E1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		64CBF294234C6B660064D5E1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		64CBF29B234C6F440064D5E1 /* currentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = currentViewController.swift; sourceTree = "<group>"; };
-		64CBF29D234C6F830064D5E1 /* futureViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = futureViewController.swift; sourceTree = "<group>"; };
-		64CBF29F234C6F950064D5E1 /* citiesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = citiesViewController.swift; sourceTree = "<group>"; };
-		64CBF2A1234C7B5B0064D5E1 /* addCityViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = addCityViewController.swift; sourceTree = "<group>"; };
+		64CBF29B234C6F440064D5E1 /* NowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NowController.swift; sourceTree = "<group>"; };
+		64CBF29D234C6F830064D5E1 /* FiveDaysController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FiveDaysController.swift; sourceTree = "<group>"; };
+		64CBF29F234C6F950064D5E1 /* CitiesController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CitiesController.swift; sourceTree = "<group>"; };
+		64CBF2A1234C7B5B0064D5E1 /* AddCityController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCityController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -84,7 +84,7 @@
 				6404F5922351E1B800A355CA /* FileSaver.swift */,
 				648D3AA02351EFF300AFB217 /* SceneDelegate.swift */,
 				64315E3B234DB9950049A6E9 /* Keys.swift */,
-				64CBF29A234C6F080064D5E1 /* views */,
+				64CBF29A234C6F080064D5E1 /* ViewControllers */,
 				64CBF28C234C6B650064D5E1 /* Main.storyboard */,
 				64CBF28F234C6B660064D5E1 /* Assets.xcassets */,
 				64CBF291234C6B660064D5E1 /* LaunchScreen.storyboard */,
@@ -94,15 +94,15 @@
 			path = weather_app;
 			sourceTree = "<group>";
 		};
-		64CBF29A234C6F080064D5E1 /* views */ = {
+		64CBF29A234C6F080064D5E1 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				64CBF29B234C6F440064D5E1 /* currentViewController.swift */,
-				64CBF29F234C6F950064D5E1 /* citiesViewController.swift */,
-				64CBF29D234C6F830064D5E1 /* futureViewController.swift */,
-				64CBF2A1234C7B5B0064D5E1 /* addCityViewController.swift */,
+				64CBF29B234C6F440064D5E1 /* NowController.swift */,
+				64CBF29F234C6F950064D5E1 /* CitiesController.swift */,
+				64CBF29D234C6F830064D5E1 /* FiveDaysController.swift */,
+				64CBF2A1234C7B5B0064D5E1 /* AddCityController.swift */,
 			);
-			path = views;
+			path = ViewControllers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -176,16 +176,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				64CBF2A2234C7B5B0064D5E1 /* addCityViewController.swift in Sources */,
+				64CBF2A2234C7B5B0064D5E1 /* AddCityController.swift in Sources */,
 				648D3AA12351EFF300AFB217 /* SceneDelegate.swift in Sources */,
 				6404F58F23507EF200A355CA /* DateExtension.swift in Sources */,
 				648D3A9F2351EAFE00AFB217 /* WeatherData.swift in Sources */,
-				64CBF2A0234C6F950064D5E1 /* citiesViewController.swift in Sources */,
+				64CBF2A0234C6F950064D5E1 /* CitiesController.swift in Sources */,
 				64CBF287234C6B650064D5E1 /* AppDelegate.swift in Sources */,
-				64CBF29C234C6F440064D5E1 /* currentViewController.swift in Sources */,
+				64CBF29C234C6F440064D5E1 /* NowController.swift in Sources */,
 				6404F58D23506F0100A355CA /* WeatherModel.swift in Sources */,
 				64315E36234DB1860049A6E9 /* Weather.swift in Sources */,
-				64CBF29E234C6F830064D5E1 /* futureViewController.swift in Sources */,
+				64CBF29E234C6F830064D5E1 /* FiveDaysController.swift in Sources */,
 				64315E34234C7EEB0049A6E9 /* Constants.swift in Sources */,
 				64315E3C234DB9950049A6E9 /* Keys.swift in Sources */,
 				6404F5932351E1B800A355CA /* FileSaver.swift in Sources */,

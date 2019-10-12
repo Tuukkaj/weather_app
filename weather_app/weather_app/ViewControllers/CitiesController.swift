@@ -8,7 +8,7 @@
 
 import UIKit
 
-class citiesViewController: UIViewController, UITableViewDataSource, UITableViewDelegate{
+class CitiesController: UIViewController, UITableViewDataSource, UITableViewDelegate{
     @IBOutlet weak var cityNameLabel: UILabel!
     @IBOutlet weak var tableView: UITableView!
     

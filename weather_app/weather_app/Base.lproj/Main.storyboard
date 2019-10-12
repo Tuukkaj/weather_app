@@ -10,7 +10,7 @@
         <!--City-->
         <scene sceneID="6mh-Jp-9Lz">
             <objects>
-                <viewController title="City" id="rux-lo-JDy" customClass="citiesViewController" customModule="weather_app" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="City" id="rux-lo-JDy" customClass="CitiesController" customModule="weather_app" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="QT2-h9-GyZ">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -57,7 +57,7 @@
         <!--Add city-->
         <scene sceneID="YXM-Oy-bTJ">
             <objects>
-                <viewController id="NnE-Fn-viI" customClass="addCityViewController" customModule="weather_app" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="NnE-Fn-viI" customClass="AddCityController" customModule="weather_app" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="hFf-Hw-DH0">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -110,7 +110,7 @@
         <!--Current-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController title="Current" id="BYZ-38-t0r" customClass="currentViewController" customModule="weather_app" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Current" id="BYZ-38-t0r" customClass="NowController" customModule="weather_app" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -126,7 +126,7 @@
         <!--Future-->
         <scene sceneID="76x-9C-syo">
             <objects>
-                <viewController title="Future" id="ogP-pZ-6wf" customClass="futureViewController" customModule="weather_app" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Future" id="ogP-pZ-6wf" customClass="FiveDaysController" customModule="weather_app" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="9cu-Wq-iEF">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

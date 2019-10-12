@@ -8,7 +8,7 @@
 
 import UIKit
 
-class addCityViewController: UIViewController {
+class AddCityController: UIViewController {
 
     @IBOutlet weak var cityNameField: UITextField!
     

@@ -8,7 +8,7 @@
 
 import UIKit
 
-class futureViewController: UIViewController {
+class FiveDaysController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
