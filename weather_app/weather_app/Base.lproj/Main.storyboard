@@ -117,7 +117,7 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Current" image="sun.min" catalog="system" id="KGZ-5W-Cqx"/>
+                    <tabBarItem key="tabBarItem" title="Now" image="sun.min" catalog="system" id="KGZ-5W-Cqx"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
@@ -133,7 +133,7 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="mDF-1e-vkF"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Future" image="sunrise" catalog="system" id="zB2-rx-29A"/>
+                    <tabBarItem key="tabBarItem" title="5 days" image="sunrise" catalog="system" id="zB2-rx-29A"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="o7c-7q-5o1" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
