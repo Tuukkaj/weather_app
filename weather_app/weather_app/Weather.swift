@@ -11,5 +11,5 @@ import CoreLocation
 
 class Weather {
     var coordinate : CLLocationCoordinate2D?
-    var data : WeatherModel.WeatherData?
+    var data : [WeatherData]?
 }

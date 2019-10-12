@@ -29,8 +29,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
         
         if difference < 600 {
             NSLog("Should be looking data from files")
+            
+            let data_ = FileSaver.loadObject()
+            
+            if let data = data_ {
+                NSLog(String(describing: data[0].temp))
+            } else {
+                NSLog("NO DATA FOUND")
+            }
         } else {
-            NSLog("Fetching weather")
             fetchWeather()
         }
         
@@ -63,11 +70,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
         NSLog(String(describing: data))
         if let data_ = data {
             let resstr = String(data: data_, encoding: String.Encoding.utf8)
-            guard let weatherData = try? JSONDecoder().decode(WeatherModel.WeatherData.self, from: data_) else {
+            guard let jsonData = try? JSONDecoder().decode(WeatherModel.WeatherData.self, from: data_) else {
                 print("Error: Couldn't decode data into Weather object")
                 return
             }
             
+            var weatherData = [] as! [WeatherData]
+            
+            for item in jsonData.list {
+                weatherData.append(WeatherData(icon: item.weather[0].icon, temp: item.main.temp, desc: item.weather[0].main))
+            }
             
             // Execute stuff in UI thread
             DispatchQueue.main.async(execute: {() in
@@ -77,7 +89,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
                 defaultDB.set(Date().toSeconds(), forKey: Constants.PREF_LAST_FETCH)
                 defaultDB.synchronize()
                 
-                NSLog(String(describing: self.weather.data?.list[1].weather[0].main))
+                FileSaver.saveObject(data: weatherData)
             })
         } else {
             NSLog("No data in response")
