@@ -13,6 +13,7 @@ import CoreLocation
 class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate {
     var gps : CLLocationManager?
     var weather = Weather()
+    var nowControllerProtocal : DataReady?
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
@@ -33,7 +34,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
             let data_ = FileSaver.loadObject()
             
             if let data = data_ {
-                NSLog(String(describing: data[0].temp))
+                weather.data = data
+
+                self.nowControllerProtocal?.setData(data)
+                NSLog(String("temp found"))
             } else {
                 NSLog("NO DATA FOUND")
             }
@@ -44,6 +48,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
         return true
     }
 
+    func setDataToViews(_ data: [WeatherData]?) {
+        let nowController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "NowView") as! NowController
+        
+        nowController.setInfo(weather.data)
+    }
+    
      func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         if let coordinate = locations.last?.coordinate {
             weather.coordinate = coordinate
@@ -90,6 +100,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
                 defaultDB.synchronize()
                 
                 FileSaver.saveObject(data: weatherData)
+                
+                self.nowControllerProtocal?.setData(weatherData)
             })
         } else {
             NSLog("No data in response")

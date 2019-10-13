@@ -107,17 +107,73 @@
             </objects>
             <point key="canvasLocation" x="2760.8695652173915" y="-532.36607142857144"/>
         </scene>
-        <!--Current-->
+        <!--Now-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController title="Current" id="BYZ-38-t0r" customClass="NowController" customModule="weather_app" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="NowView" title="Current" useStoryboardIdentifierAsRestorationIdentifier="YES" id="BYZ-38-t0r" userLabel="Now" customClass="NowController" customModule="weather_app" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="Zjy-xw-QVW">
+                                <rect key="frame" x="20" y="313.5" width="374" height="230"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" image="cloud.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="P7D-8v-Zfz">
+                                        <rect key="frame" x="0.0" y="3" width="374" height="163.5"/>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9jP-Rm-j5i">
+                                        <rect key="frame" x="0.0" y="168.5" width="374" height="20.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pSo-qu-Rdr">
+                                        <rect key="frame" x="0.0" y="189" width="374" height="20.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pHg-nT-dAF">
+                                        <rect key="frame" x="0.0" y="209.5" width="374" height="20.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                            </stackView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mTC-ol-erK">
+                                <rect key="frame" x="20" y="64" width="374" height="229.5"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ixW-P8-JmL">
+                                <rect key="frame" x="20" y="563.5" width="374" height="229.5"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                            </view>
+                        </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="ixW-P8-JmL" secondAttribute="trailing" constant="20" id="0w3-Qr-gZv"/>
+                            <constraint firstItem="Zjy-xw-QVW" firstAttribute="height" secondItem="mTC-ol-erK" secondAttribute="height" id="IxG-5K-vU2"/>
+                            <constraint firstItem="mTC-ol-erK" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="20" id="J5i-Rc-Oin"/>
+                            <constraint firstItem="ixW-P8-JmL" firstAttribute="height" secondItem="mTC-ol-erK" secondAttribute="height" id="Mll-Wv-zMb"/>
+                            <constraint firstItem="mTC-ol-erK" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="ZtN-ph-tjW"/>
+                            <constraint firstItem="Zjy-xw-QVW" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="apz-HK-K0g"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Zjy-xw-QVW" secondAttribute="trailing" constant="20" id="blG-b0-ZGA"/>
+                            <constraint firstItem="ixW-P8-JmL" firstAttribute="top" secondItem="Zjy-xw-QVW" secondAttribute="bottom" constant="20" id="fR0-nF-BUB"/>
+                            <constraint firstItem="Zjy-xw-QVW" firstAttribute="top" secondItem="mTC-ol-erK" secondAttribute="bottom" constant="20" id="h6l-OI-bOc"/>
+                            <constraint firstItem="ixW-P8-JmL" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="h8R-is-9gy"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="mTC-ol-erK" secondAttribute="trailing" constant="20" id="iQW-gi-J2R"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="ixW-P8-JmL" secondAttribute="bottom" constant="20" id="o7K-vo-AqZ"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Now" image="sun.min" catalog="system" id="KGZ-5W-Cqx"/>
+                    <tabBarItem key="tabBarItem" title="Now" image="sun.max" catalog="system" id="KGZ-5W-Cqx"/>
+                    <connections>
+                        <outlet property="descLabel" destination="pHg-nT-dAF" id="TMj-X5-CIT"/>
+                        <outlet property="locationLabel" destination="9jP-Rm-j5i" id="IxJ-vo-Ifk"/>
+                        <outlet property="temperatureLabel" destination="pSo-qu-Rdr" id="Ulz-uw-VVb"/>
+                        <outlet property="weatherIcon" destination="P7D-8v-Zfz" id="vcy-wW-XmC"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
@@ -180,9 +236,10 @@
         </scene>
     </scenes>
     <resources>
+        <image name="cloud.fill" catalog="system" width="64" height="42"/>
         <image name="house" catalog="system" width="64" height="54"/>
         <image name="plus" catalog="system" width="64" height="58"/>
-        <image name="sun.min" catalog="system" width="64" height="60"/>
+        <image name="sun.max" catalog="system" width="64" height="62"/>
         <image name="sunrise" catalog="system" width="64" height="48"/>
     </resources>
 </document>

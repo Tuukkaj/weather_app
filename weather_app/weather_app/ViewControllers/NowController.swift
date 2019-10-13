@@ -8,13 +8,48 @@
 
 import UIKit
 
-class NowController: UIViewController {
-
+class NowController: UIViewController, DataReady {
+    let appDelegate = UIApplication.shared.delegate as! AppDelegate
+    
+    @IBOutlet weak var locationLabel: UILabel!
+    @IBOutlet weak var weatherIcon: UIImageView!
+    @IBOutlet weak var temperatureLabel: UILabel!
+    @IBOutlet weak var descLabel: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        appDelegate.nowControllerProtocal = self
         // Do any additional setup after loading the view.
     }
 
+    override func viewWillAppear(_ animated: Bool) {
+        setInfo(appDelegate.weather.data)
+    }
+    
+    func setData(_ data: [WeatherData]?) {
+        setInfo(data)
+    }
+    
+    func setInfo(_ dataOpt:[WeatherData]?) {
+        if let data = dataOpt {
+            let current = data[0]
+            
+            
+            let cityOpt = UserDefaults.standard.string(forKey: Constants.PREF_SELECTED_CITY)
+            
+            if let city = cityOpt {
+                locationLabel.text = city
+            } else {
+                locationLabel.text = Constants.CURRENT_LOCATION_TEXT
+            }
+            
+            weatherIcon.image = WeatherHelper.iconStringToImage(iconString: current.icon)
+            temperatureLabel.text = String(current.temp)
+            descLabel.text = current.desc
+        } else {
+            NSLog("EMPTY DATA")
+        }
+    }
 
 }
 
