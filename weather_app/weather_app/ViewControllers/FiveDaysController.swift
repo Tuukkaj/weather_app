@@ -8,7 +8,9 @@
 
 import UIKit
 
-class FiveDaysController: UIViewController, UITableViewDataSource {
+class FiveDaysController: UIViewController, UITableViewDataSource, DataReady {
+
+    
     let appDelegate = UIApplication.shared.delegate as! AppDelegate
 
     @IBOutlet weak var tableView: UITableView!
@@ -19,6 +21,7 @@ class FiveDaysController: UIViewController, UITableViewDataSource {
         super.viewDidLoad()
         
         self.tableView.dataSource = self
+        self.appDelegate.fiveDaysControllerProtocol = self
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -55,6 +58,13 @@ class FiveDaysController: UIViewController, UITableViewDataSource {
     override func viewWillAppear(_ animated: Bool) {
         if let data = appDelegate.weather.data {
             stuff = data
+        }
+    }
+    
+    func setData(_ data: [WeatherData]?) {
+        if let data_ = data {
+            self.stuff = data_
+            tableView.reloadData()
         }
     }
 }
