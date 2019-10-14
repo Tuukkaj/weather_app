@@ -32,8 +32,7 @@ class NowController: UIViewController, DataReady {
     
     func setInfo(_ dataOpt:[WeatherData]?) {
         if let data = dataOpt {
-            let current = data[0]
-            
+            let closestTime = data[WeatherHelper.getClosestTimeIndex()]
             
             let cityOpt = UserDefaults.standard.string(forKey: Constants.PREF_SELECTED_CITY)
             
@@ -43,9 +42,9 @@ class NowController: UIViewController, DataReady {
                 locationLabel.text = Constants.CURRENT_LOCATION_TEXT
             }
             
-            weatherIcon.image = WeatherHelper.iconStringToImage(iconString: current.icon)
-            temperatureLabel.text = String(current.temp)
-            descLabel.text = current.desc
+            weatherIcon.image = WeatherHelper.iconStringToImage(iconString: closestTime.icon)
+            temperatureLabel.text = String(closestTime.temp)
+            descLabel.text = closestTime.desc
         } else {
             NSLog("EMPTY DATA")
         }
