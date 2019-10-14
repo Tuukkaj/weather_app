@@ -88,7 +88,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
             var weatherData = [] as! [WeatherData]
             
             for item in jsonData.list {
-                weatherData.append(WeatherData(icon: item.weather[0].icon, temp: item.main.temp, desc: item.weather[0].main))
+                weatherData.append(WeatherData(icon: item.weather[0].icon, temp: item.main.temp, desc: item.weather[0].main, time: item.dt_txt))
             }
             
             // Execute stuff in UI thread

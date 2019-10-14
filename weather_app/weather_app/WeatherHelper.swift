@@ -84,4 +84,8 @@ class WeatherHelper {
         
         return (-1, -1)
     }
+    
+    static func kelvinToCelcius(_ temp: Float) -> Int {
+        return Int(temp - 273.15)
+    }
 }

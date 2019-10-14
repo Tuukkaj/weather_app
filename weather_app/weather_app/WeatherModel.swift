@@ -12,6 +12,7 @@ class WeatherModel {
     struct Weather : Decodable {
         var weather : [Description]
         var main : Data
+        var dt_txt : String
     }
     
     struct Data : Decodable {
