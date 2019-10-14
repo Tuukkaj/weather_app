@@ -8,7 +8,9 @@
 
 import UIKit
 
-class CitiesController: UIViewController, UITableViewDataSource, UITableViewDelegate{
+class CitiesController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+    let appDelegate = UIApplication.shared.delegate as! AppDelegate
+
     @IBOutlet weak var cityNameLabel: UILabel!
     @IBOutlet weak var tableView: UITableView!
     
@@ -39,6 +41,8 @@ class CitiesController: UIViewController, UITableViewDataSource, UITableViewDele
         defaultDB.synchronize()
         
         cityNameLabel.text = stuff[indexPath.row]
+        
+        appDelegate.fetchWeather()
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
