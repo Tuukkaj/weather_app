@@ -43,7 +43,7 @@ class NowController: UIViewController, DataReady {
             }
             
             weatherIcon.image = WeatherHelper.iconStringToImage(iconString: closestTime.icon)
-            temperatureLabel.text = String(closestTime.temp)
+            temperatureLabel.text = String("\(WeatherHelper.kelvinToCelcius(closestTime.temp))°C")
             descLabel.text = closestTime.desc
         } else {
             NSLog("EMPTY DATA")
