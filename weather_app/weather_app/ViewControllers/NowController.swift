@@ -28,12 +28,18 @@ class NowController: UIViewController, UIWeatherRequestHandler {
         activityIndicator.hidesWhenStopped = true
         weatherIcon.addSubview(activityIndicator)
         
-        setLoadingUI()
-        // Do any additional setup after loading the view.
-    }
+        switch appDelegate.state {
+        case Constants.STATE_OK:
+            setInfo(appDelegate.weather.data)
+        case Constants.STATE_LOADING:
+            setLoadingUI()
+        case Constants.STATE_ERROR:
+            setErrorUI()
+        default:
+            setLoadingUI()
+        }
 
-    override func viewWillAppear(_ animated: Bool) {
-        setInfo(appDelegate.weather.data)
+        // Do any additional setup after loading the view.
     }
     
     func setData(_ data: [WeatherData]?) {
@@ -41,6 +47,7 @@ class NowController: UIViewController, UIWeatherRequestHandler {
     }
     
     func setErrorUI() {
+        NSLog("Error now")
         weatherIcon.image = UIImage(systemName: "exclamationmark.icloud.fill")
         locationLabel.text = "Error"
         temperatureLabel.text = "Check GPS or city name"
@@ -72,7 +79,7 @@ class NowController: UIViewController, UIWeatherRequestHandler {
             temperatureLabel.text = String("\(WeatherHelper.kelvinToCelcius(closestTime.temp))°C")
             descLabel.text = closestTime.desc
         } else {
-            NSLog("EMPTY DATA")
+            setErrorUI()
         }
     }
 

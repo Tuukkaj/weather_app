@@ -23,7 +23,16 @@ class FiveDaysController: UIViewController, UITableViewDataSource, UIWeatherRequ
         self.tableView.dataSource = self
         self.appDelegate.fiveDaysUIHandler = self
         
-        setLoadingUI()
+        switch appDelegate.state {
+        case Constants.STATE_OK:
+            setData(appDelegate.weather.data)
+        case Constants.STATE_LOADING:
+            setLoadingUI()
+        case Constants.STATE_ERROR:
+            setErrorUI()
+        default:
+            setLoadingUI()
+        }
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -76,11 +85,6 @@ class FiveDaysController: UIViewController, UITableViewDataSource, UIWeatherRequ
         return cell
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        if let data = appDelegate.weather.data {
-            stuff = data
-        }
-    }
     
     func setData(_ data: [WeatherData]?) {
         if let data_ = data {

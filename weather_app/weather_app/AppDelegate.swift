@@ -15,6 +15,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
     var weather = Weather()
     var nowUIHandler : UIWeatherRequestHandler?
     var fiveDaysUIHandler : UIWeatherRequestHandler?
+    var state : Int = Constants.STATE_LOADING
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
@@ -27,7 +28,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
         let now = Date().toSeconds()
         
         let difference = now - lastFetch
-        setLoadingUI()
 
         if difference < 600 {
             let data_ = FileSaver.loadObject()
@@ -35,8 +35,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
             if let data = data_ {
                 weather.data = data
 
-                self.nowUIHandler?.setData(data)
-                self.fiveDaysUIHandler?.setData(data)
+                setData(data: data)
             } else {
                 fetchWeather()
             }
@@ -73,7 +72,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
         if let data_ = data {
             let resstr = String(data: data_, encoding: String.Encoding.utf8)
             guard let jsonData = try? JSONDecoder().decode(WeatherModel.WeatherData.self, from: data_) else {
-                setErrorUI()
+                DispatchQueue.main.async(execute: {() in
+                    self.setErrorUI()
+                })
                 return
             }
             
@@ -83,21 +84,29 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
                 weatherData.append(WeatherData(icon: item.weather[0].icon, temp: item.main.temp, desc: item.weather[0].description, time: item.dt_txt))
             }
             
-            // Execute stuff in UI thread
-            DispatchQueue.main.async(execute: {() in
-                self.weather.data = weatherData
-                
-                let defaultDB = UserDefaults.standard
-                defaultDB.set(Date().toSeconds(), forKey: Constants.PREF_LAST_FETCH)
-                defaultDB.synchronize()
-                
-                FileSaver.saveObject(data: weatherData)
-                
-                self.nowUIHandler?.setData(weatherData)
-                self.fiveDaysUIHandler?.setData(weatherData)
-            })
+            
+            if data_.count == 0 {
+                DispatchQueue.main.async(execute: {() in
+                    self.setErrorUI()
+                })
+            } else {
+                // Execute stuff in UI thread
+                DispatchQueue.main.async(execute: {() in
+                    self.weather.data = weatherData
+                    
+                    let defaultDB = UserDefaults.standard
+                    defaultDB.set(Date().toSeconds(), forKey: Constants.PREF_LAST_FETCH)
+                    defaultDB.synchronize()
+                    
+                    FileSaver.saveObject(data: weatherData)
+                    
+                    self.setData(data: weatherData)
+                })
+            }
         } else {
-            setErrorUI()
+            DispatchQueue.main.async(execute: {() in
+                self.setErrorUI()
+            })
         }
 
      }
@@ -132,12 +141,23 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
         }
     }
     
+    func setData(data: [WeatherData]) {
+        state = Constants.STATE_OK
+        
+        nowUIHandler?.setData(data)
+        fiveDaysUIHandler?.setData(data)
+    }
+    
     func setLoadingUI() {
+        state = Constants.STATE_LOADING
+
         nowUIHandler?.setLoadingUI()
         fiveDaysUIHandler?.setLoadingUI()
     }
     
     func setErrorUI() {
+        state = Constants.STATE_ERROR
+        
         nowUIHandler?.setErrorUI()
         fiveDaysUIHandler?.setErrorUI()
     }

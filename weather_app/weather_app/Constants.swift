@@ -15,4 +15,7 @@ final class Constants {
     static let PREF_LAST_FETCH = "last_fetched_preferences"
     static let LOADING_CELL_ICON = "loading_fivedays_cell_icon"
     static let ERROR_CELL_ICON = "error_fivedays_cell_icon"
+    static let STATE_OK = 0
+    static let STATE_LOADING = 1
+    static let STATE_ERROR = 2
 }
