@@ -10,7 +10,7 @@
         <!--City-->
         <scene sceneID="6mh-Jp-9Lz">
             <objects>
-                <viewController title="City" id="rux-lo-JDy" customClass="CitiesController" customModule="weather_app" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController restorationIdentifier="citySelection" title="City" id="rux-lo-JDy" customClass="CitiesController" customModule="weather_app" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="QT2-h9-GyZ">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -57,7 +57,7 @@
         <!--Add city-->
         <scene sceneID="YXM-Oy-bTJ">
             <objects>
-                <viewController id="NnE-Fn-viI" customClass="AddCityController" customModule="weather_app" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController restorationIdentifier="addCity" id="NnE-Fn-viI" customClass="AddCityController" customModule="weather_app" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="hFf-Hw-DH0">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -77,7 +77,7 @@
                                 <rect key="frame" x="20" y="203" width="374" height="22"/>
                                 <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="18"/>
                                 <state key="normal" title="Add city" image="plus" catalog="system">
-                                    <color key="titleColor" systemColor="linkColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <color key="titleColor" systemColor="linkColor" red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
                                     <action selector="addClicked:" destination="NnE-Fn-viI" eventType="touchUpInside" id="Bb3-AS-JBv"/>
@@ -110,7 +110,7 @@
         <!--Now-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController storyboardIdentifier="NowView" title="Current" useStoryboardIdentifierAsRestorationIdentifier="YES" id="BYZ-38-t0r" userLabel="Now" customClass="NowController" customModule="weather_app" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController restorationIdentifier="now" storyboardIdentifier="NowView" title="Current" id="BYZ-38-t0r" userLabel="Now" customClass="NowController" customModule="weather_app" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -182,7 +182,7 @@
         <!--Future-->
         <scene sceneID="76x-9C-syo">
             <objects>
-                <viewController title="Future" id="ogP-pZ-6wf" customClass="FiveDaysController" customModule="weather_app" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController restorationIdentifier="fiveDays" title="Future" id="ogP-pZ-6wf" customClass="FiveDaysController" customModule="weather_app" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="9cu-Wq-iEF">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -276,9 +276,9 @@
         <!--Tab Bar Controller-->
         <scene sceneID="mVQ-Hp-ipK">
             <objects>
-                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="3Zp-if-kxY" sceneMemberID="viewController">
+                <tabBarController restorationIdentifier="tabController" automaticallyAdjustsScrollViewInsets="NO" id="3Zp-if-kxY" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Enu-r0-vUU">
+                    <tabBar key="tabBar" contentMode="scaleToFill" restorationIdentifier="tabs" insetsLayoutMarginsFromSafeArea="NO" id="Enu-r0-vUU">
                         <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -296,7 +296,7 @@
         <!--City-->
         <scene sceneID="UfK-yc-xzg">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="RKr-3S-tmd" sceneMemberID="viewController">
+                <navigationController restorationIdentifier="cityNavi" automaticallyAdjustsScrollViewInsets="NO" id="RKr-3S-tmd" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="City" image="house" catalog="system" id="uza-Fc-5nz"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="h9D-Wc-7cB">
