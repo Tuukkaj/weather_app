@@ -21,7 +21,7 @@ class WeatherModel {
 
     struct Description : Decodable {
         var icon : String
-        var main : String
+        var description : String
     }
     
     struct WeatherData : Decodable {
