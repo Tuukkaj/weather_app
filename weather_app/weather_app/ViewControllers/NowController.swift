@@ -16,9 +16,17 @@ class NowController: UIViewController, UIWeatherRequestHandler {
     @IBOutlet weak var temperatureLabel: UILabel!
     @IBOutlet weak var descLabel: UILabel!
     
+    let activityIndicator = UIActivityIndicatorView(style: .large)
+
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         appDelegate.nowUIHandler = self
+        
+        activityIndicator.frame = weatherIcon.frame
+        activityIndicator.color = .systemBlue
+        activityIndicator.hidesWhenStopped = true
+        weatherIcon.addSubview(activityIndicator)
         // Do any additional setup after loading the view.
     }
 
@@ -35,11 +43,16 @@ class NowController: UIViewController, UIWeatherRequestHandler {
     }
     
     func setLoadingUI() {
-        
+        weatherIcon.image = nil
+        activityIndicator.startAnimating()
+        locationLabel.text = "Loading..."
+        temperatureLabel.text = nil
+        descLabel.text = nil 
     }
     
     func setInfo(_ dataOpt:[WeatherData]?) {
         if let data = dataOpt {
+            activityIndicator.stopAnimating()
             let closestTime = data[WeatherHelper.getClosestTimeIndex()]
             
             let cityOpt = UserDefaults.standard.string(forKey: Constants.PREF_SELECTED_CITY)

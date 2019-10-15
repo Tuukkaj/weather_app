@@ -41,16 +41,29 @@ class FiveDaysController: UIViewController, UITableViewDataSource, UIWeatherRequ
         
         let data = self.stuff[indexPath.row]
         
-        // Good idea to not implement substring method by Apple to String:)
-        let hour = String(data.time[data.time.index(data.time.startIndex, offsetBy: 11)..<data.time.index(data.time.endIndex, offsetBy: -3)])
-        let day = String(data.time[data.time.index(data.time.startIndex, offsetBy: 8)..<data.time.index(data.time.endIndex, offsetBy: -9)])
-        let month = String(data.time[data.time.index(data.time.startIndex, offsetBy: 5)..<data.time.index(data.time.endIndex, offsetBy: -12)])
-        
-        cell.boldTitleLabel.text = "\(hour)"
-        cell.normalTitleLabel.text = "\(day).\(month)"
-        cell.subTitleLabel.text = "\(WeatherHelper.kelvinToCelcius(data.temp))°C"
-        cell.subSubTitleLabel.text = data.desc
-        cell.icon.image = WeatherHelper.iconStringToImage(iconString: data.icon)
+        if data.icon == Constants.LOADING_CELL_ICON {
+            cell.icon.image = nil
+            let activityIndicator = UIActivityIndicatorView(style: .large)
+            activityIndicator.color = .systemBlue
+            cell.icon.addSubview(activityIndicator)
+            activityIndicator.startAnimating()
+            cell.boldTitleLabel.text = "Loading..."
+            cell.normalTitleLabel.text = nil
+            cell.subTitleLabel.text = nil
+            cell.subSubTitleLabel.text = nil
+        } else {
+            // Good idea to not implement substring method by Apple to String:)
+            let hour = String(data.time[data.time.index(data.time.startIndex, offsetBy: 11)..<data.time.index(data.time.endIndex, offsetBy: -3)])
+            let day = String(data.time[data.time.index(data.time.startIndex, offsetBy: 8)..<data.time.index(data.time.endIndex, offsetBy: -9)])
+            let month = String(data.time[data.time.index(data.time.startIndex, offsetBy: 5)..<data.time.index(data.time.endIndex, offsetBy: -12)])
+            
+            cell.boldTitleLabel.text = "\(hour)"
+            cell.normalTitleLabel.text = "\(day).\(month)"
+            cell.subTitleLabel.text = "\(WeatherHelper.kelvinToCelcius(data.temp))°C"
+            cell.subSubTitleLabel.text = data.desc
+            cell.icon.image = WeatherHelper.iconStringToImage(iconString: data.icon)
+        }
+
         
         return cell
     }
@@ -73,7 +86,9 @@ class FiveDaysController: UIViewController, UITableViewDataSource, UIWeatherRequ
     }
     
     func setLoadingUI() {
-        
+        stuff = [] as [WeatherData]
+        stuff.append(WeatherData(icon: Constants.LOADING_CELL_ICON, temp: 0, desc: "", time: ""))
+        tableView.reloadData()
     }
 }
 

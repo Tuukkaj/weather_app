@@ -113,7 +113,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
      }
     
     func fetchWeather() {
-        NSLog("FETCH WEATHER")
+        setLoadingUI()
         
         let selectedCity = UserDefaults.standard.string(forKey: Constants.PREF_SELECTED_CITY)
         
@@ -143,6 +143,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
         } else {
             self.gps?.startUpdatingLocation()
         }
+    }
+    
+    func setLoadingUI() {
+        nowUIHandler?.setLoadingUI()
+        fiveDaysUIHandler?.setLoadingUI()
     }
     
     func application(_ application: UIApplication, configurationForConnecting connectingSceneSession: UISceneSession, options: UIScene.ConnectionOptions) -> UISceneConfiguration {
