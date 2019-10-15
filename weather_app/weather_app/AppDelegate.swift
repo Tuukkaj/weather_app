@@ -27,11 +27,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
         let now = Date().toSeconds()
         
         let difference = now - lastFetch
-        NSLog("DIFFERENCE : \(difference)")
         
         if difference < 600 {
-            NSLog("Should be looking data from files")
-            
             let data_ = FileSaver.loadObject()
             
             if let data = data_ {
@@ -39,9 +36,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
 
                 self.nowUIHandler?.setData(data)
                 self.fiveDaysUIHandler?.setData(data)
-                NSLog(String("temp found"))
             } else {
-                NSLog("NO DATA FOUND")
+                fetchWeather()
             }
         } else {
             fetchWeather()
