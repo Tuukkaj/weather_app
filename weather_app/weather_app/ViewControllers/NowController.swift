@@ -39,7 +39,10 @@ class NowController: UIViewController, UIWeatherRequestHandler {
     }
     
     func setErrorUI() {
-        
+        weatherIcon.image = UIImage(systemName: "exclamationmark.icloud.fill")
+        locationLabel.text = "Error"
+        temperatureLabel.text = "Check GPS or city name"
+        descLabel.text = nil
     }
     
     func setLoadingUI() {

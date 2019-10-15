@@ -51,6 +51,12 @@ class FiveDaysController: UIViewController, UITableViewDataSource, UIWeatherRequ
             cell.normalTitleLabel.text = nil
             cell.subTitleLabel.text = nil
             cell.subSubTitleLabel.text = nil
+        } else if data.icon == Constants.ERROR_CELL_ICON {
+            cell.icon.image = UIImage(systemName: "exclamationmark.icloud.fill")
+            cell.boldTitleLabel.text = "Error"
+            cell.normalTitleLabel.text = nil
+            cell.subTitleLabel.text = "Check GPS or city name"
+            cell.subSubTitleLabel.text = nil
         } else {
             // Good idea to not implement substring method by Apple to String:)
             let hour = String(data.time[data.time.index(data.time.startIndex, offsetBy: 11)..<data.time.index(data.time.endIndex, offsetBy: -3)])
@@ -82,7 +88,9 @@ class FiveDaysController: UIViewController, UITableViewDataSource, UIWeatherRequ
     }
     
     func setErrorUI() {
-        
+        stuff = [] as [WeatherData]
+        stuff.append(WeatherData(icon: Constants.ERROR_CELL_ICON, temp: 0, desc: "", time: ""))
+        tableView.reloadData()
     }
     
     func setLoadingUI() {

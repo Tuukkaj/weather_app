@@ -14,4 +14,5 @@ final class Constants {
     static let CURRENT_LOCATION_TEXT = "Current location"
     static let PREF_LAST_FETCH = "last_fetched_preferences"
     static let LOADING_CELL_ICON = "loading_fivedays_cell_icon"
+    static let ERROR_CELL_ICON = "error_fivedays_cell_icon"
 }

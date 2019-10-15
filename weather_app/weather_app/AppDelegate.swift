@@ -27,7 +27,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
         let now = Date().toSeconds()
         
         let difference = now - lastFetch
-        
+        setLoadingUI()
+
         if difference < 600 {
             let data_ = FileSaver.loadObject()
             
@@ -44,12 +45,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
         }
         
         return true
-    }
-
-    func setDataToViews(_ data: [WeatherData]?) {
-        let nowController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "NowView") as! NowController
-        
-        nowController.setInfo(weather.data)
     }
     
      func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
@@ -75,11 +70,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
      }
      
      func doneFetching(data: Data?, response: URLResponse?, error: Error?) {
-        NSLog(String(describing: data))
         if let data_ = data {
             let resstr = String(data: data_, encoding: String.Encoding.utf8)
             guard let jsonData = try? JSONDecoder().decode(WeatherModel.WeatherData.self, from: data_) else {
-                print("Error: Couldn't decode data into Weather object")
+                setErrorUI()
                 return
             }
             
@@ -103,14 +97,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
                 self.fiveDaysUIHandler?.setData(weatherData)
             })
         } else {
-            NSLog("No data in response")
+            setErrorUI()
         }
 
      }
     
     func fetchWeather() {
-        setLoadingUI()
-        
         let selectedCity = UserDefaults.standard.string(forKey: Constants.PREF_SELECTED_CITY)
         
         var stringURL : String?
@@ -135,7 +127,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
         
         if let stringURL_ = stringURL {
             fetchUrl(url: stringURL_)
-            NSLog(stringURL_)
         } else {
             self.gps?.startUpdatingLocation()
         }
@@ -144,6 +135,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
     func setLoadingUI() {
         nowUIHandler?.setLoadingUI()
         fiveDaysUIHandler?.setLoadingUI()
+    }
+    
+    func setErrorUI() {
+        nowUIHandler?.setErrorUI()
+        fiveDaysUIHandler?.setErrorUI()
     }
     
     func application(_ application: UIApplication, configurationForConnecting connectingSceneSession: UISceneSession, options: UIScene.ConnectionOptions) -> UISceneConfiguration {
