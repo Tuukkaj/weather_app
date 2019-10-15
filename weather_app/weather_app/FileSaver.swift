@@ -31,6 +31,15 @@ class FileSaver {
         }
     }
     
+    static func removeFile() {
+        let path = giveDirectory()
+        do {
+            try FileManager.default.removeItem(atPath: path)
+        } catch let error as NSError {
+            
+        }
+    }
+    
     static func loadObject() -> [WeatherData]? {
         let pathWithFileName = self.giveDirectory()
         

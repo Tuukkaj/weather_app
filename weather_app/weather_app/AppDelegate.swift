@@ -73,6 +73,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
             let resstr = String(data: data_, encoding: String.Encoding.utf8)
             guard let jsonData = try? JSONDecoder().decode(WeatherModel.WeatherData.self, from: data_) else {
                 DispatchQueue.main.async(execute: {() in
+                    FileSaver.removeFile()
                     self.setErrorUI()
                 })
                 return
