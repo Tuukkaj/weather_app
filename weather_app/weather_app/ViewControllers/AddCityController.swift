@@ -19,20 +19,30 @@ class AddCityController: UIViewController {
 
     @IBAction func addClicked(_ sender: Any) {
         let defaultDB = UserDefaults.standard
-        let city = cityNameField.text
         
-        if let _city = city {
-            var cities = [] as [Any]
-            let prefCities = defaultDB.array(forKey: Constants.PREF_CITIES)
-            
-            if let prefCities_ = prefCities {
-                cities += prefCities_
+        if let city = cityNameField.text {
+            if city.count > 0 {
+                var cities = [] as [Any]
+                let prefCities = defaultDB.array(forKey: Constants.PREF_CITIES)
+                
+                if let prefCities_ = prefCities {
+                    cities += prefCities_
+                }
+                
+                cities.append(city)
+                defaultDB.set(cities, forKey: Constants.PREF_CITIES)
+                defaultDB.synchronize()
+                self.navigationController?.popViewController(animated: true)
+            } else {
+                let alertController = UIAlertController(title: "Error", message: "You can't enter empty city name", preferredStyle: .alert)
+
+                let infoAction = UIAlertAction(title: "Okay", style: .default) { (action) in
+                }
+                
+                alertController.addAction(infoAction)
+                
+                self.present(alertController, animated: true, completion: {() -> Void in })
             }
-            
-            cities.append(_city)
-            defaultDB.set(cities, forKey: Constants.PREF_CITIES)
-            defaultDB.synchronize()
-            self.navigationController?.popViewController(animated: true)
         }
     }
 }
