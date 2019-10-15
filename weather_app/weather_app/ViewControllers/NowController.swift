@@ -47,7 +47,7 @@ class NowController: UIViewController, UIWeatherRequestHandler {
     }
     
     func setErrorUI() {
-        NSLog("Error now")
+        activityIndicator.stopAnimating()
         weatherIcon.image = UIImage(systemName: "exclamationmark.icloud.fill")
         locationLabel.text = "Error"
         temperatureLabel.text = "Check GPS or city name"
