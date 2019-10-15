@@ -8,7 +8,7 @@
 
 import UIKit
 
-class FiveDaysController: UIViewController, UITableViewDataSource, DataReady {
+class FiveDaysController: UIViewController, UITableViewDataSource, UIWeatherRequestHandler {
 
     
     let appDelegate = UIApplication.shared.delegate as! AppDelegate
@@ -21,7 +21,7 @@ class FiveDaysController: UIViewController, UITableViewDataSource, DataReady {
         super.viewDidLoad()
         
         self.tableView.dataSource = self
-        self.appDelegate.fiveDaysControllerProtocol = self
+        self.appDelegate.fiveDaysUIHandler = self
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -66,6 +66,14 @@ class FiveDaysController: UIViewController, UITableViewDataSource, DataReady {
             self.stuff = data_
             tableView.reloadData()
         }
+    }
+    
+    func setErrorUI() {
+        
+    }
+    
+    func setLoadingUI() {
+        
     }
 }
 

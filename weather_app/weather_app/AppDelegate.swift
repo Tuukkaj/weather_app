@@ -13,8 +13,8 @@ import CoreLocation
 class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate {
     var gps : CLLocationManager?
     var weather = Weather()
-    var nowControllerProtocal : DataReady?
-    var fiveDaysControllerProtocol : DataReady? 
+    var nowUIHandler : UIWeatherRequestHandler?
+    var fiveDaysUIHandler : UIWeatherRequestHandler?
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
@@ -37,8 +37,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
             if let data = data_ {
                 weather.data = data
 
-                self.nowControllerProtocal?.setData(data)
-                self.fiveDaysControllerProtocol?.setData(data)
+                self.nowUIHandler?.setData(data)
+                self.fiveDaysUIHandler?.setData(data)
                 NSLog(String("temp found"))
             } else {
                 NSLog("NO DATA FOUND")
@@ -103,8 +103,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
                 
                 FileSaver.saveObject(data: weatherData)
                 
-                self.nowControllerProtocal?.setData(weatherData)
-                self.fiveDaysControllerProtocol?.setData(weatherData)
+                self.nowUIHandler?.setData(weatherData)
+                self.fiveDaysUIHandler?.setData(weatherData)
             })
         } else {
             NSLog("No data in response")

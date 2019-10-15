@@ -8,7 +8,7 @@
 
 import UIKit
 
-class NowController: UIViewController, DataReady {
+class NowController: UIViewController, UIWeatherRequestHandler {
     let appDelegate = UIApplication.shared.delegate as! AppDelegate
     
     @IBOutlet weak var locationLabel: UILabel!
@@ -18,7 +18,7 @@ class NowController: UIViewController, DataReady {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        appDelegate.nowControllerProtocal = self
+        appDelegate.nowUIHandler = self
         // Do any additional setup after loading the view.
     }
 
@@ -28,6 +28,14 @@ class NowController: UIViewController, DataReady {
     
     func setData(_ data: [WeatherData]?) {
         setInfo(data)
+    }
+    
+    func setErrorUI() {
+        
+    }
+    
+    func setLoadingUI() {
+        
     }
     
     func setInfo(_ dataOpt:[WeatherData]?) {

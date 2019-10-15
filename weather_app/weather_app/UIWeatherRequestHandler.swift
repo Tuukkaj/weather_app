@@ -6,6 +6,8 @@
 //  Copyright © 2019 Tuukka Juusela. All rights reserved.
 //
 
-protocol DataReady {
+protocol UIWeatherRequestHandler {
     func setData(_ data: [WeatherData]?)
+    func setLoadingUI()
+    func setErrorUI()
 }
