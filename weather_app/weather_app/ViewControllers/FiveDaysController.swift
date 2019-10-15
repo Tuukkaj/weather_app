@@ -22,6 +22,8 @@ class FiveDaysController: UIViewController, UITableViewDataSource, UIWeatherRequ
         
         self.tableView.dataSource = self
         self.appDelegate.fiveDaysUIHandler = self
+        
+        setLoadingUI()
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

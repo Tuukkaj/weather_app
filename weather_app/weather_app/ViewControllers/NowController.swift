@@ -27,6 +27,8 @@ class NowController: UIViewController, UIWeatherRequestHandler {
         activityIndicator.color = .systemBlue
         activityIndicator.hidesWhenStopped = true
         weatherIcon.addSubview(activityIndicator)
+        
+        setLoadingUI()
         // Do any additional setup after loading the view.
     }
 
